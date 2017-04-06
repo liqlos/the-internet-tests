@@ -10,7 +10,6 @@ def setup_browser():
     # setup browser
     config.browser_name = browser_instance
     config.maximize_window = True
-    # config.screenshot_folder = os.path.join(os.getcwd(), "screenshots")
 
     # turn off selene auto-screenshots
     from selene import helpers
