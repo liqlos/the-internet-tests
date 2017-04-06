@@ -1,6 +1,7 @@
 from common_imports import *
+from selene.helpers import env
 
-browser_instance = config.Browser.CHROME
+browser_instance = env('selene_browser_name') or config.Browser.CHROME
 base_url = "https://github.com"
 
 

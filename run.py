@@ -11,7 +11,7 @@ os.popen("allure generate allure-report -o target")
 
 # for local tests in IDEA only
 try:
-    webbrowser.open("http://localhost:63342/" + os.path.relpath(os.getcwd(), "..") + "/target/index.html")
+    webbrowser.open("http://localhost:63343/" + os.path.relpath(os.getcwd(), "..") + "/target/index.html")
 except:
     pass
 
