@@ -1,0 +1,5 @@
+.cache/
+.env/
+allure-report/
+target/
+test_suite.txt
