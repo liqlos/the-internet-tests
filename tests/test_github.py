@@ -48,21 +48,21 @@ class TestRegistrationForm:
                                                              email_info_message, password_info_message):
         sign_up_form = SignUpForm()
 
-        sign_up_form \
-            .set_username("") \
-            .set_email("") \
-            .set_password("") \
-            .click_sign_up()
+        (sign_up_form
+         .set_username("")
+         .set_email("")
+         .set_password("")
+         .click_sign_up())
 
-        sign_up_form \
-            .top_info_message_should(be.visible) \
-            .top_info_message_should(have.exact_text(top_info_message)) \
-            .username_info_message_should(be.visible) \
-            .username_info_message_should(have.exact_text(username_info_message)) \
-            .email_info_message_should(be.visible) \
-            .email_info_message_should(have.exact_text(email_info_message)) \
-            .password_info_message_should(be.visible) \
-            .password_info_message_should(have.exact_text(password_info_message))
+        (sign_up_form
+         .top_info_message_should(be.visible)
+         .top_info_message_should(have.exact_text(top_info_message))
+         .username_info_message_should(be.visible)
+         .username_info_message_should(have.exact_text(username_info_message))
+         .email_info_message_should(be.visible)
+         .email_info_message_should(have.exact_text(email_info_message))
+         .password_info_message_should(be.visible)
+         .password_info_message_should(have.exact_text(password_info_message)))
 
     @allure.severity(pytest.allure.severity_level.TRIVIAL)
     @allure.testcase("http://my.tms.org/TESTCASE-3")
@@ -71,15 +71,15 @@ class TestRegistrationForm:
         username = random_string()
         email = random_string()
 
-        sign_up_form \
-            .set_username(username) \
-            .set_email(email) \
-            .set_password("") \
-            .click_sign_up()
+        (sign_up_form
+         .set_username(username)
+         .set_email(email)
+         .set_password("")
+         .click_sign_up())
 
-        sign_up_form \
-            .username_input_should(have.value(username)) \
-            .email_input_should(have.value(email))
+        (sign_up_form
+         .username_input_should(have.value(username))
+         .email_input_should(have.value(email)))
 
 
 @allure.story("Search")
@@ -95,13 +95,13 @@ class TestSearch:
 
         header.search_for(query)
 
-        search_results_page \
-            .tab_should("Repositories", be.visible) \
-            .tab_should("Code", be.visible) \
-            .tab_should("Commits", be.visible) \
-            .tab_should("Issues", be.visible) \
-            .tab_should("Wikis", be.visible) \
-            .tab_should("Users", be.visible)
+        (search_results_page
+         .tab_should("Repositories", be.visible)
+         .tab_should("Code", be.visible)
+         .tab_should("Commits", be.visible)
+         .tab_should("Issues", be.visible)
+         .tab_should("Wikis", be.visible)
+         .tab_should("Users", be.visible))
 
         header.search_input_should(have.value(query))
 
@@ -123,7 +123,9 @@ class TestPageSearch:
                              [("A terminal", ["Clone the repository", "Hello World", "Push it"]),
                               ("GitHub for Windows", ["Clone the repository", "Create an index file", "Commit & sync"]),
                               ("GitHub for Mac", ["Clone the repository", "Create an index file", "Commit & sync"]),
-                              ("I don't know", ["Download GitHub for Windows", "Clone the repository", "Create an index file", "Commit & sync"])
+                              ("I don't know",
+                               ["Download GitHub for Windows", "Clone the repository", "Create an index file",
+                                "Commit & sync"])
                               ])
     def test_pages_github_flows_for_user_site_tab(self, reset_driver_state, git_client_tab, visible_steps):
         common_steps = ["Create a repository", "What git client are you using?", "…and you're done!"]
