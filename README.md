@@ -24,6 +24,4 @@ This is a sample project to practice selenide-pytest-allure integration
   
   # TODO:
   
-   - replace requirements.txt(pip + virtualenv) with pipenv
    - ? move verification + make common allure-step function?
-   - selene/config env variables in command line
