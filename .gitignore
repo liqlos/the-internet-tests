@@ -1,5 +1,6 @@
+.idea/workspace.xml
 .cache/
+.pytest_cache/
+tests/.pytest_cache/
 .env/
 allure-report/
-target/
-test_suite.txt

@@ -1,7 +1,6 @@
 from common_imports import *
 from pages.github.explore_tab import ProjectShowcasesGrid
 from pages.github.general import Header, SignUpForm, SearchResultsPage
-from pages.github.pages_resource import PagesIndex
 from helpers import random_string
 
 
@@ -9,7 +8,6 @@ from helpers import random_string
 @allure.feature("Sample suite")
 @pytest.mark.usefixtures("reset_driver_state", "screenshot_on_failure")
 class TestExplore:
-    @allure.severity(pytest.allure.severity_level.CRITICAL)
     @allure.testcase("http://my.tms.org/TESTCASE-1")
     @pytest.mark.parametrize("showcase_title", ["Open data", "Tools for Open Source", "Design essentials"])
     def test_number_of_project_showcase_supported_languages_is_the_same_on_preview_and_showcase_page_and_tooltip(self,
@@ -38,7 +36,6 @@ class TestExplore:
 @allure.feature("Sample suite")
 @pytest.mark.usefixtures("reset_driver_state", "screenshot_on_failure")
 class TestRegistrationForm:
-    @allure.severity(pytest.allure.severity_level.MINOR)
     @allure.testcase("http://my.tms.org/TESTCASE-2")
     @pytest.mark.parametrize("top_info_message,username_info_message,email_info_message,password_info_message",
                              [("There were problems creating your account.", "Login can't be blank",
@@ -64,7 +61,6 @@ class TestRegistrationForm:
          .password_info_message_should(be.visible)
          .password_info_message_should(have.exact_text(password_info_message)))
 
-    @allure.severity(pytest.allure.severity_level.TRIVIAL)
     @allure.testcase("http://my.tms.org/TESTCASE-3")
     def test_username_and_email_field_data_is_not_lost_in_case_of_incorrect_registration_attempt(self):
         sign_up_form = SignUpForm()
@@ -86,7 +82,6 @@ class TestRegistrationForm:
 @allure.feature("Sample suite")
 @pytest.mark.usefixtures("reset_driver_state", "screenshot_on_failure")
 class TestSearch:
-    @allure.severity(pytest.allure.severity_level.CRITICAL)
     @allure.testcase("http://my.tms.org/TESTCASE-5")
     def test_search_redirects_to_search_page(self):
         header = Header()
@@ -106,41 +101,24 @@ class TestSearch:
         header.search_input_should(have.value(query))
 
 
-@allure.story("Pages")
-@allure.feature("Sample suite")
-@pytest.mark.usefixtures("screenshot_on_failure")
-class TestPageSearch:
-    @pytest.fixture()
-    def reset_driver_state(self):
-        browser.visit("https://pages.github.com/")
+    # @allure.testcase("http://my.tms.org/TESTCASE-4")
+    # @pytest.mark.parametrize("git_client_tab,visible_steps",
+    #                          [("A terminal", ["Clone the repository", "Hello World", "Push it"]),
+    #                           ("GitHub for Windows", ["Clone the repository", "Create an index file", "Commit & sync"])
+    #                           ])
+    # def test_pages_github_flows_for_user_site_tab(self, reset_driver_state, git_client_tab, visible_steps):
+    #     common_steps = ["Create a repository", "What git client are you using?", "…and you're done!"]
+    #     common_steps[2:2] = visible_steps
+    #     # visible_steps.update(common_steps)
+    #     pages_index = PagesIndex()
+    #
+    #     pages_index.select_user_or_organization_site()
+    #     pages_index.select_client_tab(git_client_tab)
+    #
+    #     pages_index.verify_steps(common_steps)
 
-        yield None
-        browser.driver().delete_all_cookies()
-
-    @allure.severity(pytest.allure.severity_level.NORMAL)
-    @allure.testcase("http://my.tms.org/TESTCASE-4")
-    @pytest.mark.parametrize("git_client_tab,visible_steps",
-                             [("A terminal", ["Clone the repository", "Hello World", "Push it"]),
-                              ("GitHub for Windows", ["Clone the repository", "Create an index file", "Commit & sync"]),
-                              ("GitHub for Mac", ["Clone the repository", "Create an index file", "Commit & sync"]),
-                              ("I don't know",
-                               ["Download GitHub for Windows", "Clone the repository", "Create an index file",
-                                "Commit & sync"])
-                              ])
-    def test_pages_github_flows_for_user_site_tab(self, reset_driver_state, git_client_tab, visible_steps):
-        common_steps = ["Create a repository", "What git client are you using?", "…and you're done!"]
-        common_steps[2:2] = visible_steps
-        # visible_steps.update(common_steps)
-        pages_index = PagesIndex()
-
-        pages_index.select_user_or_organization_site()
-        pages_index.select_client_tab(git_client_tab)
-
-        pages_index.verify_steps(common_steps)
-
-    @allure.severity(pytest.allure.severity_level.BLOCKER)
-    @allure.testcase("http://my.tms.org/TESTCASE-6")
-    @allure.issue("http://jira.lan/browse/ISSUE-1")
-    def test_that_always_fails(self):
-        with allure.step("Example failing step"):
-            assert 2 == 3, "Intentional fail"
+    # @allure.testcase("http://my.tms.org/TESTCASE-6")
+    # @allure.issue("http://jira.lan/browse/ISSUE-1")
+    # def test_that_always_fails(self):
+    #     with allure.step("Example failing step"):
+    #         assert 2 == 3, "Intentional fail"

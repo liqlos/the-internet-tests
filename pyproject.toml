@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "selene-sample-py"
+version = "0.1.0"
+description = ""
+authors = ["Aleksei Bukhalov <buhaloff.aleks@gmail.com>"]
+readme = "README.md"
+packages = [{include = "selene_sample_py"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytest = "^7.2.0"
+selene = "^1.0.2"
+allure-pytest = "^2.12.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
