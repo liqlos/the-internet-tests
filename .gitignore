@@ -1,6 +1,8 @@
-.idea/workspace.xml
+.idea/
 .cache/
 .pytest_cache/
 tests/.pytest_cache/
 .env/
 allure-report/
+common_imports/__pycache__/
+__pycache__/

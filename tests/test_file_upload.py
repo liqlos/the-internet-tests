@@ -1,11 +1,11 @@
 import os
-from common_imports import *
+import allure
 from pages.file_upload import FileUpload
 
 
 @allure.story("http://my.jira.org/7777")
 @allure.feature("File upload")
-class FileUploadTests:
+class TestFileUpload:
     @allure.testcase("http://my.tms.org/TESTCASE-1")
     def test_can_upload_file(self):
         file_name = "1.jpeg"

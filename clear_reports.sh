@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rm -rf allure-reports
+rm -rf allure-report

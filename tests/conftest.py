@@ -1,6 +1,7 @@
 import pytest
 
-from common_imports import *
+from selene.api import *
+import allure, pytest
 from selene.helpers import env
 
 browser_instance = env('selene_browser_name') or config.browser_name

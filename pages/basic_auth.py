@@ -1,4 +1,5 @@
-from common_imports import *
+from selene.api import *
+import allure, pytest
 
 
 class BasicAuthPage:
