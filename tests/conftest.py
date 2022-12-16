@@ -4,9 +4,7 @@ from selene.api import *
 import allure, pytest
 from selene.helpers import env
 
-browser_instance = env('selene_browser_name') or config.browser_name
-base_url = "https://github.com"
-
+base_url = "https://the-internet.herokuapp.com"
 
 @pytest.fixture(scope="session", autouse=True)
 def setup_browser():
