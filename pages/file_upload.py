@@ -1,5 +1,5 @@
 from selene.api import *
-import allure, pytest
+import allure
 
 
 class FileUpload:

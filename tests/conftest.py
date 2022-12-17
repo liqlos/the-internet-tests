@@ -1,15 +1,28 @@
-import pytest
-
 from selene.api import *
 import allure, pytest
-from selene.helpers import env
+from selenium import webdriver
 
 base_url = "https://the-internet.herokuapp.com"
+
 
 @pytest.fixture(scope="session", autouse=True)
 def setup_browser():
     # setup browser
-    config.browser_name = browser_instance
+
+    # capabilities = {
+    #     "browserName": "firefox",
+    #     "browserVersion": "108.0",
+    #     "selenoid:options": {
+    #         "enableVNC": True,
+    #         "enableVideo": True
+    #     }
+    # }
+    #
+    # driver = webdriver.Remote(
+    #     command_executor="http://localhost:4444/wd/hub",
+    #     desired_capabilities=capabilities
+    # )
+    # browser.set_driver(driver)
     config.maximize_window = True
 
     # turn off selene auto-screenshots
