@@ -1,5 +1,6 @@
 import os
 import allure
+from selene.support.conditions import have
 from pages.file_upload import FileUpload
 
 
@@ -13,6 +14,6 @@ class TestFileUpload:
         file_upload_page = FileUpload()
 
         file_upload_page.open().upload_file(file_path)
-        assert file_upload_page._success_text.text == "File Uploaded!"
-        assert file_upload_page._uploaded_file_name.text == file_name
 
+        file_upload_page._success_text.should(have.text('File Uploaded!'))
+        file_upload_page._uploaded_file_name.should(have.text(file_name))

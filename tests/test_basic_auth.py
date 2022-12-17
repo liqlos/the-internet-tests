@@ -1,5 +1,5 @@
 import allure
-import pytest
+from selene.support.conditions import have
 
 from pages.basic_auth import BasicAuthPage
 
@@ -12,7 +12,7 @@ class TestBasicAuth:
         basic_auth_page = BasicAuthPage()
         basic_auth_page.open('admin', 'admin')
 
-        assert basic_auth_page._success_text_element.text == "Congratulations! You must have the proper credentials."
+        basic_auth_page._success_text_element.should(have.text('Congratulations! You must have the proper credentials.'))
 
     # @pytest.mark.parametrize("user, password",
     #                          [("admin", "a"), ("a", "admin"), ("", ""), ("admin", "")], )
